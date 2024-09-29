@@ -1,0 +1,82 @@
+Étape 1 : Créer un compte EmailJS
+
+    Inscris-toi sur EmailJS.
+    Crée un service d'email : Après t'être inscrit, suis les instructions pour connecter EmailJS à ton compte Gmail.
+    Crée un modèle d’email : Dans le tableau de bord, crée un modèle d’email pour le message que tu souhaites recevoir.
+
+Étape 2 : Ajouter EmailJS à ton projet
+
+    Inclure le SDK EmailJS : Ajoute ce script dans la section <head> de ton index.html :
+
+   -- html --
+
+<script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+Modifier le fichier script.js pour gérer l'envoi du formulaire. Voici un exemple de code :
+
+--- javascript ---
+
+    // Initialise EmailJS avec ton User ID
+    (function(){
+        emailjs.init("YOUR_USER_ID"); // Remplacez par votre User ID EmailJS
+    })();
+
+    // Gérer la soumission du formulaire
+    document.getElementById("contact-form").addEventListener("submit", function(event) {
+        event.preventDefault(); // Empêche le rechargement de la page
+
+        // Envoi du message
+        emailjs.sendForm('YOUR_SERVICE_ID', 'YOUR_TEMPLATE_ID', this)
+            .then(function() {
+                document.getElementById("form-result").innerHTML = "Message envoyé avec succès !";
+            }, function(error) {
+                document.getElementById("form-result").innerHTML = "Échec de l'envoi du message. Réessayez.";
+                console.log('Erreur:', error);
+            });
+    });
+
+Étape 3 : Remplir les informations nécessaires
+
+    Remplace YOUR_USER_ID, YOUR_SERVICE_ID et YOUR_TEMPLATE_ID avec les valeurs que tu obtiens dans ton tableau de bord EmailJS.
+
+Étape 4 : Tester le formulaire
+
+    Ouvre ton fichier index.html dans un navigateur.
+    Remplis le formulaire de contact et clique sur "Envoyer".
+    Vérifie ton compte Gmail pour voir si le message a été reçu.
+
+    Étape 1 : Mettre à jour le modèle d'email sur EmailJS
+
+    Connecte-toi à ton compte EmailJS.
+    Va dans l'onglet "Templates" (ou "Modèles").
+    Clique sur le modèle que tu as créé pour le formulaire de contact.
+    Dans le corps de l'email, tu peux utiliser des variables pour inclure les données du formulaire. Par exemple, utilise les champs suivants :
+        {{name}} pour le nom
+        {{email}} pour l'email
+        {{message}} pour le message
+
+Exemple de corps d'email :
+
+Voici un exemple de corps d'email que tu pourrais utiliser :
+
+-- css --
+
+Vous avez reçu un nouveau message de {{name}} ({{email}}):
+
+Message:
+{{message}}
+
+Étape 2 : Assure-toi que les noms des champs correspondent
+
+Dans ton code HTML, assure-toi que les noms des champs du formulaire sont correctement définis. Voici un rappel des champs que tu as dans ton formulaire :
+
+html
+
+<label for="name">Nom :</label>
+<input type="text" id="name" name="name" required>
+
+<label for="email">Email :</label>
+<input type="email" id="email" name="email" required>
+
+<label for="message">Message :</label>
+<textarea id="message" name="message" required></textarea>
