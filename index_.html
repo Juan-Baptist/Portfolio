@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Portfolio Website</title>
+    <link rel="stylesheet" href="style_.css">
+</head>
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>
+                <img src="images/logo.png" class="logo">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Services</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-text">
+                <p>Etudiant en Expertise Informatique</p>
+                <h1>Salut, je suis <span>Jean-Baptiste VIOSSI</span><br>du BENIN</h1>
+            </div>
+        </div>
+    </div>
+<!-- ------------------about----------------- -->
+
+    <div id="about">
+        <div class="container">
+            <div class="row">
+                <div class="about-col-1"> 
+                    <img src="images/Untitled.jpg" alt="">
+                </div>
+                <div class="about-col-2">
+                    <h1 class="sub-title">À propos de moi</h1>
+                    <p>Je suis Jean-Baptiste Viossi, étudiant en informatique à EPITECH et passionné de cybersécurité et développement web. J'aime créer des sites optimisés sous WordPress et explorer le domaine du hacking éthique. Actuellement en stage chez Brelsoft, je continue d'améliorer mes compétences tout en cherchant des opportunités de collaboration. En dehors de la tech, je m'intéresse au sport et au modèle, et je vise toujours l'excellence dans tout ce que j'entreprends.</p>
+                        <div class="tab-titles">
+                            <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+                            <p class="tab-links" onclick="opentab('experience')">Experience</p>
+                            <p class="tab-links" onclick="opentab('education')">Education</p>
+                        </div>
+                        <div class="tab-contents active-tab" id="skills">
+                            <ul>
+                                <li><span>UI/UX</span><br>Designing Web/App interfaces</li>
+                                <li><span>Web dévelopment</span><br>Designing Web/App interfaces</li>
+                                <li><span>APP Development</span><br>Bulding Android/ios app</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="experience">
+                            <ul>
+                                <li><span>POPEYE</span><br>Deploiement App Web</li>
+                                <li><span>BURP</span><br>Détection des vulnérabilités des Systèmes(cybersécurité)</li>
+                                <li><span>TODO LIST</span><br>Application web pour la gestion des tâches</li>
+                            </ul>
+                        </div>
+                        <div class="tab-contents" id="education">
+                            <ul>
+                                <li><span>2024 - En cours</span><br>Stage à Brelsoft</li>
+                                <li><span>2023 - 2024</span><br>Tek 1 EPITECH</li>
+                                <li><span>2021 - 2022</span><br>Proficiency(Certificat en Anglias)</li>
+                            </ul>
+                        </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ------------------services-------------------- -->
+     
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links")
+        var tabcontents = document.getElementsByClassName("tab-contents")
+
+        function opentab(name) {
+            for(tablink of tablinks) {
+                tablink.classList.remove("active-link");
+            }
+            for(tabcontent of tabcontents) {
+                tabcontent .classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(name).classList.add("active-tab")
+        }
+    </script>
+
+</body>
+</html>
