@@ -5,19 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Personal Portfolio Website</title>
     <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/929bc56ed3.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="header">
         <div class="container">
             <nav>
                 <img src="images/logo.png" class="logo">
-                <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Services</a></li>
-                    <li><a href="#">Portfolio</a></li>
-                    <li><a href="#">Contact</a></li>
+                <ul id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
                 </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
             </nav>
             <div class="header-text">
                 <p>Etudiant en Expertise Informatique</p>
@@ -68,6 +71,96 @@
     </div>
 
     <!-- ------------------services-------------------- -->
+     <div id="services">
+        <div class="container">
+            <h1 class="sub-title">Mes services</h1>
+            <div class="services-list">
+                <div>
+                    <i class="fa-solid fa-code"></i>
+                    <h2>Création de sites web sur mesure</h2>
+                    <p>Conception de sites web professionnels, optimisés pour les moteurs de recherche, adaptés à vos besoins spécifiques.</p>
+                    <a href="#">Learn more</a>
+                </div>
+                <div>
+                    <i class="fa-solid fa-crop"></i>
+                    <h2>Optimisation et maintenance de sites web</h2>
+                    <p>Maintenance technique, mises à jour et optimisation des performances pour garantir une navigation fluide et sécurisée.</p>
+                    <a href="#">Learn more</a>
+                </div>
+                <div>
+                    <i class="fa-brands fa-app-store-ios"></i>
+                    <h2>Cybersécurité et protection des données</h2>
+                    <p>Audit de sécurité et mise en place de solutions pour protéger vos systèmes contre les menaces informatiques.</p>
+                    <a href="#">Learn more</a>
+                </div>
+            </div>
+        </div>
+     </div>
+    <!-- --------------------------portfolio------------------------- -->
+    <div id="portfolio">
+        <div class="cointainer">
+            <h1 class="sub-title">Mon travail</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="images/work-1.jpg">
+                    <div class="layer">
+                        <h3>Site vitrine WordPress</h3>
+                        <p>Création d'un site vitrine pour une petite entreprise, optimisé pour le SEO.</p>
+                        <a href="#"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/work-2.jpg">
+                    <div class="layer">
+                        <h3>Application de gestion des tâches</h3>
+                        <p>Développement d'une application web de gestion des tâches avec Node js et MySQL.</p>
+                        <a href="#"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="images/work-3.jpg">
+                    <div class="layer">
+                        <h3>Portfolio personnel</h3>
+                        <p>Mon portfolio personnel responsive pour présenter mes compétences et projets.</p>
+                        <a href="#"><i class="fa-solid fa-link"></i></a>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="btn">See more</a>
+        </div>
+    </div>
+
+    <!-- --------------------contact------------------------- -->
+     <div id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="contact-left">
+                    <h1 class="sub-title">Contact Me</h1>
+                    <p><i class="fas fa-paper-plane"></i> contact@exemple.com</p>
+                    <p><i class="fas fa-phone-square-alt"></i> +229 67434572</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter-square"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                    </div>
+                    <a href="images/my_cv.pdf" download class="btn btn2">Telechager CV</a>
+                </div>
+                <div class="contact-right">
+                    <form name="submit-to-google-sheet">
+                        <input type="text" name="Name" placeholder="Votre Nom" required>
+                        <input type="email" name="Email" placeholder="Votre Email" required>
+                        <textarea name="Message" id="" rows="6" placeholder="Votre Message"></textarea>
+                        <button type="submit" class="btn btn2">Submit</button>
+                    </form>
+                    <span id="msg"></span>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>copyright Juan <i class="fas fa-heart"></i>.</p>
+        </div>
+     </div>
      
     <script>
         var tablinks = document.getElementsByClassName("tab-links")
@@ -84,6 +177,35 @@
             document.getElementById(name).classList.add("active-tab")
         }
     </script>
+
+    <script>
+        var sidemenu = document.getElementById("sidemenu");
+        function openmenu() {
+            sidemenu.style.right = "0";
+        }
+        function closemenu() {
+            sidemenu.style.right = "-200px";
+        }
+    </script>
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbyJcJ-H2REEQw-ZDTNkkmuKIoOA64OUKWJjAVXQlUJoG8ILA0wH8ES4csVgEIaKvUzsaQ/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg = document.getElementById("msg")
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML = "Message sent successfully"
+                setTimeout(function(){
+                    msg.innerHTML = ""
+                },5000 )
+                form.reset()
+            })
+
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
 
 </body>
 </html>
